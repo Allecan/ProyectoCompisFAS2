@@ -8,17 +8,125 @@ package gt.url.compis.proyectofas2;
 /** CUP generated interface containing symbol constants. */
 public interface sym {
   /* terminals */
-  public static final int COMA = 3;
-  public static final int NUM = 2;
-  public static final int PD = 4;
-  public static final int error = 1;
+  public static final int NBOOL = 46;
+  public static final int SQRT = 58;
+  public static final int SEN = 54;
+  public static final int CLIN = 38;
+  public static final int MetRes = 17;
+  public static final int POT = 6;
+  public static final int CLPRPV = 33;
+  public static final int OLOG = 16;
+  public static final int CLPRPU = 31;
+  public static final int CLPRPT = 32;
+  public static final int P = 3;
+  public static final int NUMR = 48;
+  public static final int MYQ = 10;
+  public static final int DECR = 5;
+  public static final int INT = 19;
+  public static final int INCR = 4;
+  public static final int TAN = 56;
+  public static final int CLEX = 29;
+  public static final int F = 15;
+  public static final int FRM = 40;
+  public static final int ELS = 26;
+  public static final int CL = 28;
+  public static final int CADTXT = 50;
+  public static final int BOOL = 21;
+  public static final int FRH = 41;
+  public static final int FLC = 14;
+  public static final int FRDEC = 43;
+  public static final int NUM = 47;
+  public static final int FRD = 39;
+  public static final int IF = 24;
+  public static final int RETN = 27;
   public static final int EOF = 0;
+  public static final int METPRIN = 18;
+  public static final int RD = 44;
+  public static final int error = 1;
+  public static final int IMP = 23;
+  public static final int EQEQ = 8;
+  public static final int SPC = 2;
+  public static final int COS = 55;
+  public static final int NEQ = 9;
+  public static final int CLMTPV = 37;
+  public static final int EQ = 7;
+  public static final int CLMTPU = 35;
+  public static final int CLMTPT = 36;
+  public static final int LOG = 57;
+  public static final int PDR = 13;
+  public static final int CLMT = 34;
+  public static final int WT = 45;
+  public static final int CLPR = 30;
+  public static final int IDEN = 49;
+  public static final int MNQ = 11;
+  public static final int FLOAT = 22;
+  public static final int FcI = 52;
+  public static final int FcF = 51;
+  public static final int STRING = 20;
+  public static final int FcB = 53;
+  public static final int FRINC = 42;
+  public static final int THN = 25;
+  public static final int PIZ = 12;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
+  "SPC",
+  "P",
+  "INCR",
+  "DECR",
+  "POT",
+  "EQ",
+  "EQEQ",
+  "NEQ",
+  "MYQ",
+  "MNQ",
+  "PIZ",
+  "PDR",
+  "FLC",
+  "F",
+  "OLOG",
+  "MetRes",
+  "METPRIN",
+  "INT",
+  "STRING",
+  "BOOL",
+  "FLOAT",
+  "IMP",
+  "IF",
+  "THN",
+  "ELS",
+  "RETN",
+  "CL",
+  "CLEX",
+  "CLPR",
+  "CLPRPU",
+  "CLPRPT",
+  "CLPRPV",
+  "CLMT",
+  "CLMTPU",
+  "CLMTPT",
+  "CLMTPV",
+  "CLIN",
+  "FRD",
+  "FRM",
+  "FRH",
+  "FRINC",
+  "FRDEC",
+  "RD",
+  "WT",
+  "NBOOL",
   "NUM",
-  "COMA",
-  "PD"
+  "NUMR",
+  "IDEN",
+  "CADTXT",
+  "FcF",
+  "FcI",
+  "FcB",
+  "SEN",
+  "COS",
+  "TAN",
+  "LOG",
+  "SQRT"
   };
 }
 

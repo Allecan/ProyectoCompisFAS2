@@ -1,8 +1,8 @@
 package gt.url.compis.proyectofas2;
 
-terminal Integer NUM;
-terminal COMA;
-terminal PD;
-non terminal Integer S;
 
-S ::= NUM COMA S | NUM ;
+non terminal S;
+terminal  SPC, P, INCR, DECR, POT, EQ, EQEQ,NEQ,MYQ,MNQ,PIZ,PDR,FLC,F,OLOG,MetRes, METPRIN, INT,STRING,BOOL,FLOAT,IMP,IF,THN,ELS;
+terminal  RETN,CL,CLEX,CLPR,CLPRPU,CLPRPT,CLPRPV,CLMT,CLMTPU,CLMTPT,CLMTPV,CLIN,FRD, FRM, FRH, FRINC, FRDEC, RD, WT;
+terminal  NBOOL, NUM, NUMR, IDEN, CADTXT, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT;
+S ::= ;
