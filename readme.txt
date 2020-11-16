@@ -1,2 +1,0 @@
-Kelvin Cano
-Luis Rodriguez

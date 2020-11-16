@@ -1,0 +1,8 @@
+package gt.url.compis.proyectofas2;
+
+terminal Integer NUM;
+terminal COMA;
+terminal PD;
+non terminal Integer S;
+
+S ::= NUM COMA S | NUM ;
