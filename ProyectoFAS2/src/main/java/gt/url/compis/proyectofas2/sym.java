@@ -17,10 +17,12 @@ public interface sym {
   public static final int CLPRPV = 33;
   public static final int OLOG = 16;
   public static final int CLPRPU = 31;
+  public static final int RES = 60;
   public static final int CLPRPT = 32;
   public static final int P = 3;
   public static final int NUMR = 48;
   public static final int MYQ = 10;
+  public static final int DSP = 64;
   public static final int DECR = 5;
   public static final int INT = 19;
   public static final int INCR = 4;
@@ -34,6 +36,7 @@ public interface sym {
   public static final int BOOL = 21;
   public static final int FRH = 41;
   public static final int FLC = 14;
+  public static final int DIV = 62;
   public static final int FRDEC = 43;
   public static final int NUM = 47;
   public static final int FRD = 39;
@@ -43,9 +46,11 @@ public interface sym {
   public static final int METPRIN = 18;
   public static final int RD = 44;
   public static final int error = 1;
+  public static final int MUL = 61;
   public static final int IMP = 23;
   public static final int EQEQ = 8;
   public static final int SPC = 2;
+  public static final int MOD = 63;
   public static final int COS = 55;
   public static final int NEQ = 9;
   public static final int CLMTPV = 37;
@@ -61,6 +66,7 @@ public interface sym {
   public static final int MNQ = 11;
   public static final int FLOAT = 22;
   public static final int FcI = 52;
+  public static final int SUM = 59;
   public static final int FcF = 51;
   public static final int STRING = 20;
   public static final int FcB = 53;
@@ -126,7 +132,13 @@ public interface sym {
   "COS",
   "TAN",
   "LOG",
-  "SQRT"
+  "SQRT",
+  "SUM",
+  "RES",
+  "MUL",
+  "DIV",
+  "MOD",
+  "DSP"
   };
 }
 
