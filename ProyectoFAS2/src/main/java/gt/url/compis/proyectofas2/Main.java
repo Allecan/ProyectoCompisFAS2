@@ -22,8 +22,18 @@ import java.util.logging.Logger;
 
 public class Main {
 
-  
     public static void main(String[] args) throws IOException {
-        
+//        String codigo = ""; /*Esto es para obtener desde consola*/
+//        codigo = args[0];
+//        System.out.println(codigo);
+        try {
+            Lexico lex = new Lexico(new FileReader("codigo.loop"));
+            Sintactico sint = new Sintactico(lex);
+            sint.parse();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

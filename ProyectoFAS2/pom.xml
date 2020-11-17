@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>gt.url.compis</groupId>
     <artifactId>LOOP</artifactId>
-    <version>1.0-BETA</version>
+    <version>2.0-BETA</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -51,6 +51,18 @@
                     <progress>true</progress>
                     <debug>true</debug>
                 </configuration>                
+            </plugin>
+            <plugin>                
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>                         
+                            <mainClass>gt.url.compis.proyectofas2.Main</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
             </plugin>
         </plugins>
     </build>

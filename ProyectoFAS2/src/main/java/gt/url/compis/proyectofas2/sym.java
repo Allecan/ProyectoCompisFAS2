@@ -40,6 +40,7 @@ public interface sym {
   public static final int FRDEC = 43;
   public static final int NUM = 47;
   public static final int FRD = 39;
+  public static final int NMCL = 65;
   public static final int IF = 24;
   public static final int RETN = 27;
   public static final int EOF = 0;
@@ -138,7 +139,8 @@ public interface sym {
   "MUL",
   "DIV",
   "MOD",
-  "DSP"
+  "DSP",
+  "NMCL"
   };
 }
 

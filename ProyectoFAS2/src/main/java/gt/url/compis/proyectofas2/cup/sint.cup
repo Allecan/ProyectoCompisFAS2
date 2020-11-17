@@ -1,8 +1,27 @@
 package gt.url.compis.proyectofas2;
 
-
-non terminal S;
 terminal  SPC, P, INCR, DECR, POT, EQ, EQEQ,NEQ,MYQ,MNQ,PIZ,PDR,FLC,F,OLOG,MetRes, METPRIN, INT,STRING,BOOL,FLOAT,IMP,IF,THN,ELS;
 terminal  RETN,CL,CLEX,CLPR,CLPRPU,CLPRPT,CLPRPV,CLMT,CLMTPU,CLMTPT,CLMTPV,CLIN,FRD, FRM, FRH, FRINC, FRDEC, RD, WT;
-terminal  NBOOL, NUM, NUMR, IDEN, CADTXT, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, SUM, RES, MUL, DIV, MOD, DSP;
-S ::= ;
+terminal  NBOOL, NUM, NUMR, IDEN, CADTXT, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, SUM, RES, MUL, DIV, MOD, DSP, NMCL;
+
+non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
+
+STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
+ifU     ::= IF SPC cond1 SPC THN F SPC SPC RETN SPC NUM F 
+            | IF SPC cond2 SPC THN F SPC SPC RETN SPC NUM F 
+            | IF SPC cond3 SPC THN F SPC SPC RETN SPC NUM F 
+            | IF SPC cond4 SPC THN F SPC SPC RETN SPC NUM F
+            | IF SPC cond5 SPC THN F SPC SPC RETN SPC NUM F;       
+
+ifELS   ::= ELS SPC cond1 SPC THN F SPC SPC RETN SPC NUM F 
+            | ELS SPC cond2 SPC THN F SPC SPC RETN SPC NUM F 
+            | ELS SPC cond3 SPC THN F SPC SPC RETN SPC NUM F 
+            | ELS SPC cond4 SPC THN F SPC SPC RETN SPC NUM F 
+            | ELS SPC cond5 SPC THN F SPC SPC RETN SPC NUM F 
+            | ELS F SPC SPC RETN SPC NUM F;  
+
+cond1   ::= IDEN MOD NUM;
+cond2   ::= IDEN EQEQ NUM;
+cond3   ::= IDEN NEQ NUM;
+cond4   ::= IDEN MYQ NUM;
+cond5   ::= IDEN MNQ NUM;
