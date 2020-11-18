@@ -33,7 +33,7 @@ terminal SPC, P, COMA, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, 
 non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin, ESTRUCTURA_INSTANCIAR;
 non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
 non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
-non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign, Declar;
+non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign, Declar, Metodo;
 non terminal OPERACIONES_CICLOS, SIGNOS_COMPARACION, OPERACIONES_ARITMETICAS, ESTRUCTURA_FOR, OPERACIONES_DO, ESTRUCTURA_DO, ESPACIOS_5; //funciones para ciclos
 
 LOOP ::= LineaC LOOP | LineaC;
@@ -51,6 +51,7 @@ Pinea ::= SPC SPC Salida
         | SPC SPC Retor 
         | SPC SPC Asign 
         | SPC SPC Declar 
+        | SPC SPC Metodo
         | SPC SPC STRUC_if
         | SPC SPC ESTRUCTURA_FOR 
         | SPC SPC ESTRUCTURA_DO
@@ -58,18 +59,24 @@ Pinea ::= SPC SPC Salida
 
 Retor ::= RETN SPC NUM;
 
-Salida ::= WT SPC CADTXT                                                        //falta agregar
+Salida ::= WT SPC CADTXT                                                      
         | WT SPC IDEN 
         | WT SPC CADTXT COMA SPC IDEN 
         | WT SPC IDEN COMA SPC CADTXT 
-        | WT SPC IDEN COMA SPC NUM COMA SPC CADTXT;
+        | WT SPC IDEN COMA SPC NUM COMA SPC CADTXT
+        | WT SPC Metodo
+        | WT SPC Metodo COMA SPC Metodo;
 
-Asign ::= IDEN SPC EQ SPC NUM                                                   //falta agregar
+Asign ::= IDEN SPC EQ SPC NUM                                                
         | IDEN SPC EQ SPC CADTXT 
         | IDEN SPC EQ SPC NUMR 
-        | IDEN SPC EQ SPC IDEN SUM NUM 
-        | IDEN SPC EQ SPC NUM SUM IDEN 
-        | IDEN SPC EQ SPC IDEN ;
+        | IDEN SPC EQ SPC IDEN OPERACIONES_ARITMETICAS NUM 
+        | IDEN SPC EQ SPC NUM OPERACIONES_ARITMETICAS IDEN 
+        | IDEN SPC EQ SPC NUM OPERACIONES_ARITMETICAS NUM 
+        | IDEN SPC EQ SPC IDEN
+        | Metodo EQ SPC NUM;
+
+Metodo ::= IDEN P IDEN PIZ IDEN PDR | IDEN P IDEN PIZ PDR | IDEN P IDEN;
 
 OPERACIONES_ARITMETICAS ::= SUM
                            |RES
