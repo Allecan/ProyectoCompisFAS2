@@ -5,125 +5,26 @@
  */
 package gt.url.compis.proyectofas2;
 
-//import static gt.url.compis.proyectofas1.Main.Escribir;
-
-//import static gt.url.compis.proyectofas1.Main.convertStringArrayToString;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-import java.io.Reader;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
 /**
  *
- * @author Charly Ponce
+ * @author Shadow
  */
 public class Menu extends javax.swing.JFrame {
 
     /**
-     * Creates new form FrmPrincipal
+     * Creates new form NewJFrame
      */
     public Menu() {
-
         initComponents();
-        txtResultado.setLineWrap(true);
-        txtResultado.setWrapStyleWord(true);
-        this.setLocationRelativeTo(null);
-    }
-
-    public static String PreguntaSiNo(String strMensaje) {
-        int seleccion = JOptionPane.showOptionDialog(
-                null,
-                strMensaje,
-                "Seleccione una opción",
-                JOptionPane.YES_NO_CANCEL_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                new Object[]{"Si", "No"},
-                "Si");
-
-        if (seleccion != -1) {
-            if ((seleccion + 1) == 1) {
-                return "SI";
-            } else {
-                return "NO";
-            }
-        }
-        return null;
-    }
-
-    public void Escribir(String texto) throws IOException {
-
-        File archivo;
-        FileWriter escribir;
-        PrintWriter linea;
-        archivo = new File("codigo.txt");
-        if (!archivo.exists()) {
-            try {
-                archivo.createNewFile();
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
-                linea.println(texto);
-                linea.close();
-                escribir.close();
-            } catch (Exception e) {
-            }
-
-        } else {
-            try {
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
-                linea.println(texto);
-                linea.close();
-                escribir.close();
-            } catch (Exception e) {
-            }
-
-        }
-    }
-
-    public void Escribir2(String texto) throws IOException {
-
-        File archivo;
-        FileWriter escribir;
-        PrintWriter linea;
-        archivo = new File("tablaGraf.txt");
-        if (!archivo.exists()) {
-            try {
-                archivo.createNewFile();
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
-                linea.println(texto);
-                linea.close();
-                escribir.close();
-            } catch (Exception e) {
-            }
-
-        } else {
-            try {
-                escribir = new FileWriter(archivo, true);
-                linea = new PrintWriter(escribir);
-                linea.println(texto);
-                linea.close();
-                escribir.close();
-            } catch (Exception e) {
-            }
-
-        }
     }
 
     /**
@@ -135,14 +36,20 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnAnalizar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtResultado = new javax.swing.JTextArea();
+        btnAnalizar = new javax.swing.JButton();
         btnAnalizar1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtResultado1 = new javax.swing.JTextArea();
+        analisis = new javax.swing.JTextField();
+        btnAnalizar2 = new javax.swing.JButton();
+
+        txtResultado.setColumns(20);
+        txtResultado.setRows(5);
+        jScrollPane1.setViewportView(txtResultado);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnAnalizar.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         btnAnalizar.setText("Analizar");
@@ -155,16 +62,9 @@ public class Menu extends javax.swing.JFrame {
                 btnAnalizarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAnalizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 340, 150, 50));
-
-        txtResultado.setColumns(20);
-        txtResultado.setRows(5);
-        jScrollPane1.setViewportView(txtResultado);
-
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 15, 940, 290));
 
         btnAnalizar1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        btnAnalizar1.setText("Mostrar");
+        btnAnalizar1.setText("Cargar Archivo");
         btnAnalizar1.setToolTipText("Ver tabla");
         btnAnalizar1.setBorder(new javax.swing.border.MatteBorder(null));
         btnAnalizar1.setContentAreaFilled(false);
@@ -174,33 +74,101 @@ public class Menu extends javax.swing.JFrame {
                 btnAnalizar1ActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAnalizar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 340, 150, 50));
 
-        jLabel1.setBackground(new java.awt.Color(0, 204, 255));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 10, 970, 430));
+        txtResultado1.setColumns(20);
+        txtResultado1.setRows(5);
+        jScrollPane2.setViewportView(txtResultado1);
+
+        analisis.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                analisisActionPerformed(evt);
+            }
+        });
+
+        btnAnalizar2.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        btnAnalizar2.setText("Limpiar");
+        btnAnalizar2.setToolTipText("Seleccionar y Analizar archivo");
+        btnAnalizar2.setBorder(new javax.swing.border.MatteBorder(null));
+        btnAnalizar2.setContentAreaFilled(false);
+        btnAnalizar2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnAnalizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAnalizar2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(analisis)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(109, 109, 109)
+                .addComponent(btnAnalizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(158, 158, 158)
+                .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(155, 155, 155)
+                .addComponent(btnAnalizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(197, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(42, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(analisis))
+                .addGap(42, 42, 42)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAnalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnalizar1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAnalizar2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(85, 85, 85))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAnalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizarActionPerformed
-        // TODO add your handling code here  
-
-       
+        ArrayList<String> syntacticErrors = null;
         
-       
+        
+        try {
+            Lexico lex = new Lexico(new FileReader("codigo.loop"));
+            Sintactico sint = new Sintactico(lex);
+            sint.parse();
+           syntacticErrors = sint.SyntacticErrors;
+            String contenido = ""; //aqui1
 
+              //aqui2
+//            analisis.setText("Programa sin errores");
+//            System.out.println("\nSIN ERRORES\n");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+
+//            analisis.setText("El programa contiene errores, verifique la consola para consultarlos");
+
+//            System.out.println("\n-*-*-*- ERRORES -*-*-*-\n");
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }        
 
     }//GEN-LAST:event_btnAnalizarActionPerformed
 
     private void btnAnalizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizar1ActionPerformed
-        File archivo = new File("tablaGraf.txt");
-        txtResultado.setText(null);
+        File archivo = new File("codigo.loop");
+        txtResultado1.setText(null);
         try {
             BufferedReader leer = new BufferedReader(new FileReader(archivo));
             try {
                 String linea = leer.readLine();
                 while (linea != null) {
-                    txtResultado.append(linea + "\n");
+                    txtResultado1.append(linea + "\n");
                     linea = leer.readLine();
                 }
             } catch (IOException ex) {
@@ -210,8 +178,16 @@ public class Menu extends javax.swing.JFrame {
             Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-
     }//GEN-LAST:event_btnAnalizar1ActionPerformed
+
+    private void analisisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_analisisActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_analisisActionPerformed
+
+    private void btnAnalizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalizar2ActionPerformed
+        txtResultado1.setText("");
+        analisis.setText("");
+    }//GEN-LAST:event_btnAnalizar2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,12 +216,6 @@ public class Menu extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -256,11 +226,13 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField analisis;
     private javax.swing.JButton btnAnalizar;
     private javax.swing.JButton btnAnalizar1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnAnalizar2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea txtResultado;
+    private javax.swing.JTextArea txtResultado1;
     // End of variables declaration//GEN-END:variables
-
 }

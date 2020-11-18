@@ -41,7 +41,7 @@ precedence left CL;
 
 LOOP ::= LineaC LOOP | LineaC;
 
-LineaC ::= Import_lib | Gramar_clase | FuncPrin;
+LineaC ::= Import_lib | Gramar_clase FuncPrin | FuncPrin;
 
 Import_lib ::= IMP SPC CADTXT;
 
