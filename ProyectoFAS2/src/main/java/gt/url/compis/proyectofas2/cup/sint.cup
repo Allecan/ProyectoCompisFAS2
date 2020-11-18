@@ -33,6 +33,7 @@ non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin;
 non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
 non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;}
 non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign;
+non terminal OPERACIONES_CICLOS, SIGNOS_COMPARACION, OPERACIONES_ARITMETICAS, ESTRUCTURA_FOR; //funciones en el for
 
 LOOP ::= LineaC LOOP | LineaC;
 
@@ -60,3 +61,19 @@ Asign ::= IDEN SPC EQ SPC NUM                                                   
         | IDEN SPC EQ SPC IDEN SUM NUM 
         | IDEN SPC EQ SPC NUM SUM IDEN 
         | IDEN SPC EQ SPC IDEN ;
+
+OPERACIONES_ARITMETICAS ::= SUM
+                           |RES
+                           |MUL
+                           |DIV;
+
+OPERACIONES_CICLOS ::= INCR
+                      |DECR
+
+SIGNOS_COMPARACION ::= EQEQ
+                      |NEQ
+                      |MYQ
+                      |MNQ:
+
+ESTRUCTURA_FOR ::= INT SPC IDEN DESDE SPC IDEN SPC EQ SPC NUM SPC MIENTRAS SPC IDEN SPC OPERACIONES_CICLOS SPC NUM SPC HACER SPC SPC SPC ESCRIBIR SPC IDEN SPC SPC SPC IDEN SPC EQ SPC IDEN OPERACIONES_ARITMETICAS NUM
+                  |DESDE SPC IDEN SPC EQ SPC NUM SPC MIENTRAS SPC IDEN SPC OPERACIONES_CICLOS SPC NUM SPC HACER SPC SPC SPC ESCRIBIR SPC IDEN SPC SPC SPC IDEN SPC EQ SPC IDEN OPERACIONES_CICLOS;
