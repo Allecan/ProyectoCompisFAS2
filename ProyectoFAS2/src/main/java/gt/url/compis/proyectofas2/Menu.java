@@ -144,6 +144,21 @@ public class Menu extends javax.swing.JFrame {
             sint.parse();
            syntacticErrors = sint.SyntacticErrors;
             String contenido = ""; //aqui1
+            
+                          for (int i=0;i<syntacticErrors.size();i++) {
+      
+      contenido += contenido + syntacticErrors.get(i) + "\r\n";
+    }
+              
+              if (contenido==""){
+              
+              analisis.setText("Programa sin Errores");
+                  
+              }
+              else{
+            analisis.setText(contenido);
+            
+              }
 
               //aqui2
 //            analisis.setText("Programa sin errores");
