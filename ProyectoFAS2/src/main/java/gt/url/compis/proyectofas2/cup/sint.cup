@@ -31,8 +31,8 @@ terminal SPC, P, COMA, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, 
 
 non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin;
 non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
-non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;}
-non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign;
+non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
+non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign, Declar;
 non terminal OPERACIONES_CICLOS, SIGNOS_COMPARACION, OPERACIONES_ARITMETICAS, ESTRUCTURA_FOR, OPERACIONES_DO, ESTRUCTURA_DO, ESPACIOS_5; //funciones para ciclos
 
 LOOP ::= LineaC LOOP | LineaC;
@@ -45,7 +45,14 @@ DeclPrin ::= INT SPC METPRIN PIZ PDR;
 
 CodSuelt ::= Pinea CodSuelt | Pinea;
 
-Pinea ::= SPC SPC Salida | SPC SPC RD SPC IDEN | SPC SPC Retor | SPC SPC Asign | SPC SPC ESTRUCTURA_FOR | SPC SPC ESTRUCTURA_DO;
+Pinea ::= SPC SPC Salida 
+        | SPC SPC RD SPC IDEN 
+        | SPC SPC Retor 
+        | SPC SPC Asign 
+        | SPC SPC Declar 
+        | SPC SPC STRUC_if
+        | SPC SPC ESTRUCTURA_FOR 
+        | SPC SPC ESTRUCTURA_DO;
 
 Retor ::= RETN SPC NUM;
 
@@ -96,3 +103,26 @@ ESTRUCTURA_DO ::= FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SP
                  |SPC SPC FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SPC SIGNOS_COMPARACION SPC IDEN
                  |SPC SPC FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SPC SIGNOS_COMPARACION SPC NUM;
                 
+Declar ::= INT SPC Asign | FLOAT SPC Asign | INT SPC IDEN SPC ; 
+
+STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
+
+ifU     ::= IF SPC cond1 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | IF SPC cond2 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | IF SPC cond3 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | IF SPC cond4 SPC THN SPC SPC SPC SPC RETN SPC NUM
+            | IF SPC cond5 SPC THN SPC SPC SPC SPC RETN SPC NUM;       
+
+ifELS   ::= ELS SPC cond1 SPC THN SPC SPC SPC SPC RETN SPC NUM  
+            | ELS SPC cond2 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | ELS SPC cond3 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | ELS SPC cond4 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | ELS SPC cond5 SPC THN SPC SPC SPC SPC RETN SPC NUM 
+            | ELS SPC SPC SPC SPC RETN SPC NUM;  
+
+cond1   ::= IDEN MOD NUM;
+cond2   ::= IDEN EQEQ NUM;
+cond3   ::= IDEN NEQ NUM;
+cond4   ::= IDEN MYQ NUM;
+cond5   ::= IDEN MNQ NUM;
+ 
