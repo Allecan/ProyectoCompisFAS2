@@ -29,7 +29,8 @@ terminal CL, CLEX, CLPRPU, CLPRPT, CLPRPV, CLMTPU, CLMTPT, CLMTPV;              
 terminal MetRes, METPRIN, IMP, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, RETN, CLIN, RD, WT;
 terminal SPC, P, COMA, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
 
-non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin;
+
+non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin, ESTRUCTURA_INSTANCIAR;
 non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
 non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
 non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign, Declar;
@@ -52,7 +53,8 @@ Pinea ::= SPC SPC Salida
         | SPC SPC Declar 
         | SPC SPC STRUC_if
         | SPC SPC ESTRUCTURA_FOR 
-        | SPC SPC ESTRUCTURA_DO;
+        | SPC SPC ESTRUCTURA_DO
+        | SPC SPC ESTRUCTURA_INSTANCIAR;
 
 Retor ::= RETN SPC NUM;
 
@@ -102,6 +104,9 @@ ESTRUCTURA_DO ::= FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SP
                  |FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SPC SIGNOS_COMPARACION SPC NUM
                  |SPC SPC FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SPC SIGNOS_COMPARACION SPC IDEN
                  |SPC SPC FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SPC SIGNOS_COMPARACION SPC NUM;
+
+ESTRUCTURA_INSTANCIAR ::= NMCL SPC IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR
+                         |IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR;
                 
 Declar ::= INT SPC Asign | FLOAT SPC Asign | INT SPC IDEN SPC ; 
 

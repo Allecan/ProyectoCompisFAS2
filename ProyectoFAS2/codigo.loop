@@ -1,6 +1,3 @@
 entero Principal()
-  hacer
-     a=5+b
-  mientras b < 10
-  leer variabe
+  r = instanciar Rectangulo()
   devolver 0
