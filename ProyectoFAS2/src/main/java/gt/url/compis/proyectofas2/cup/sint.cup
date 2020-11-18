@@ -1,4 +1,25 @@
 package gt.url.compis.proyectofas2;
+import java_cup.runtime.Symbol;
+
+parser code {:
+
+public void syntax_error( Symbol s )
+{
+    System.out.println("Error de Sintaxis en: " +s.value );    
+    System.out.println( "Linea " + s.left );
+    System.out.println( "Columna " + s.right );
+}
+
+public void unrecovered_syntax_error( Symbol s ) throws java.lang.Exception
+{
+
+}
+
+:};
+
+/* Ejemplo para que te ponga el lexema xd ↓
+     Import_lib ::= IMP SPC CADTXT NUM:ca 
+        {: System.out.println("Linea: " + caleft + " Lexema: " +ca); :}; */
 
 terminal IF,THN, ELS;                                               //Tokens para los if 
 terminal INT, STRING, BOOL, FLOAT;                                  //Tokens de tipos de datos

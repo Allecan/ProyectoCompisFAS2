@@ -30,11 +30,11 @@ public class Main {
             Lexico lex = new Lexico(new FileReader("codigo.loop"));
             Sintactico sint = new Sintactico(lex);
             sint.parse();          
-            System.out.println("\nSIN ERRORES\n");
+//            System.out.println("\nSIN ERRORES\n");
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            System.out.println("\n-*-*-*- ERRORES -*-*-*-\n");
+//            System.out.println("\n-*-*-*- ERRORES -*-*-*-\n");
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

@@ -95,66 +95,66 @@ NoIdes = ({lqs2}|{NUM}){IDEN} | {IDEN}{lqs2}
 {COMENTARIO}    { }
 {F}             { }
 
-{NUM}           {return new Symbol(sym.NUM);}
-{SPC}           {return new Symbol(sym.SPC);}
-{P}             {return new Symbol(sym.P);}    
-{INCR}          {return new Symbol(sym.INCR);}
-{DECR}          {return new Symbol(sym.DECR);}    
-{SUM}           {return new Symbol(sym.SUM);}  
-{RES}           {return new Symbol(sym.RES);}  
-{MUL}           {return new Symbol(sym.MUL);}  
-{DIV}           {return new Symbol(sym.DIV);}  
-{MOD}           {return new Symbol(sym.MOD);}  
-{POT}           {return new Symbol(sym.POT);}    
-{EQ}            {return new Symbol(sym.EQ);}    
-{EQEQ}          {return new Symbol(sym.EQEQ);}    
-{NEQ}           {return new Symbol(sym.NEQ);}    
-{MYQ}           {return new Symbol(sym.MYQ);}    
-{MNQ}           {return new Symbol(sym.MNQ);}
-{PIZ}           {return new Symbol(sym.PIZ);}
-{PDR}           {return new Symbol(sym.PDR);}
-{DSP}           {return new Symbol(sym.DSP);}
-{FLC}           {return new Symbol(sym.FLC);}
-{OLOG}          {return new Symbol(sym.OLOG);}
-{MetRes}        {return new Symbol(sym.MetRes);}   
-{METPRIN}       {return new Symbol(sym.METPRIN);}   
-{INT}           {return new Symbol(sym.INT);}
-{STRING}        {return new Symbol(sym.STRING);}    
-{BOOL}          {return new Symbol(sym.BOOL);}
-{FLOAT}         {return new Symbol(sym.FLOAT);}
-{IMP}           {return new Symbol(sym.IMP);}
-{IF}            {return new Symbol(sym.IF);}
-{THN}           {return new Symbol(sym.THN);}
-{ELS}           {return new Symbol(sym.ELS);}
-{RETN}          {return new Symbol(sym.RETN);}
-{CL}            {return new Symbol(sym.CL);}
-{CLEX}          {return new Symbol(sym.CLEX);}    
-{CLPRPU}        {return new Symbol(sym.CLPRPU);}
-{CLPRPT}        {return new Symbol(sym.CLPRPT);}
-{CLPRPV}        {return new Symbol(sym.CLPRPV);}
-{CLMTPU}        {return new Symbol(sym.CLMTPU);}
-{CLMTPT}        {return new Symbol(sym.CLMTPT);}    
-{CLMTPV}        {return new Symbol(sym.CLMTPV);}            
-{CLIN}          {return new Symbol(sym.CLIN);}
-{FRD}           {return new Symbol(sym.FRD);}
-{FRM}           {return new Symbol(sym.FRM);}
-{FRH}           {return new Symbol(sym.FRH);}
-{FRINC}         {return new Symbol(sym.FRINC);}
-{FRDEC}         {return new Symbol(sym.FRDEC);}
-{RD}            {return new Symbol(sym.RD);}
-{WT}            {return new Symbol(sym.WT);}
-{NBOOL}         {return new Symbol(sym.NBOOL);}
-{NMCL}          {return new Symbol(sym.NMCL);}
-{NUMR}          {return new Symbol(sym.NUMR);}
-{IDEN}          {return new Symbol(sym.IDEN);}
-{CADTXT}        {return new Symbol(sym.CADTXT);}
-{FcF}           {return new Symbol(sym.FcF);}
-{FcI}           {return new Symbol(sym.FcI);}
-{FcB}           {return new Symbol(sym.FcB);} 
-{SEN}           {return new Symbol(sym.SEN);}
-{COS}           {return new Symbol(sym.COS);}
-{TAN}           {return new Symbol(sym.TAN);}
-{LOG}           {return new Symbol(sym.LOG);}
-{SQRT}          {return new Symbol(sym.SQRT);}
+{NUM}           {return new Symbol( sym.NUM, yyline +1, yycolumn +1, yytext() );}
+{SPC}           {return new Symbol(sym.SPC, yyline +1, yycolumn +1, yytext());}
+{P}             {return new Symbol(sym.P, yyline +1, yycolumn +1, yytext());}    
+{INCR}          {return new Symbol(sym.INCR, yyline +1, yycolumn +1, yytext());}
+{DECR}          {return new Symbol(sym.DECR, yyline +1, yycolumn +1, yytext());}    
+{SUM}           {return new Symbol(sym.SUM, yyline +1, yycolumn +1, yytext());}  
+{RES}           {return new Symbol(sym.RES, yyline +1, yycolumn +1, yytext());}  
+{MUL}           {return new Symbol(sym.MUL, yyline +1, yycolumn +1, yytext());}  
+{DIV}           {return new Symbol(sym.DIV, yyline +1, yycolumn +1, yytext());}  
+{MOD}           {return new Symbol(sym.MOD, yyline +1, yycolumn +1, yytext());}  
+{POT}           {return new Symbol(sym.POT, yyline +1, yycolumn +1, yytext());}    
+{EQ}            {return new Symbol(sym.EQ, yyline +1, yycolumn +1, yytext());}    
+{EQEQ}          {return new Symbol(sym.EQEQ, yyline +1, yycolumn +1, yytext());}    
+{NEQ}           {return new Symbol(sym.NEQ, yyline +1, yycolumn +1, yytext());}    
+{MYQ}           {return new Symbol(sym.MYQ, yyline +1, yycolumn +1, yytext());}    
+{MNQ}           {return new Symbol(sym.MNQ, yyline +1, yycolumn +1, yytext());}
+{PIZ}           {return new Symbol(sym.PIZ, yyline +1, yycolumn +1, yytext());}
+{PDR}           {return new Symbol(sym.PDR, yyline +1, yycolumn +1, yytext());}
+{DSP}           {return new Symbol(sym.DSP, yyline +1, yycolumn +1, yytext());}
+{FLC}           {return new Symbol(sym.FLC, yyline +1, yycolumn +1, yytext());}
+{OLOG}          {return new Symbol(sym.OLOG, yyline +1, yycolumn +1, yytext());}
+{MetRes}        {return new Symbol(sym.MetRes, yyline +1, yycolumn +1, yytext());}   
+{METPRIN}       {return new Symbol(sym.METPRIN, yyline +1, yycolumn +1, yytext());}   
+{INT}           {return new Symbol(sym.INT, yyline +1, yycolumn +1, yytext());}
+{STRING}        {return new Symbol(sym.STRING, yyline +1, yycolumn +1, yytext());}    
+{BOOL}          {return new Symbol(sym.BOOL, yyline +1, yycolumn +1, yytext());}
+{FLOAT}         {return new Symbol(sym.FLOAT, yyline +1, yycolumn +1, yytext());}
+{IMP}           {return new Symbol(sym.IMP, yyline +1, yycolumn +1, yytext());}
+{IF}            {return new Symbol(sym.IF, yyline +1, yycolumn +1, yytext());}
+{THN}           {return new Symbol(sym.THN, yyline +1, yycolumn +1, yytext());}
+{ELS}           {return new Symbol(sym.ELS, yyline +1, yycolumn +1, yytext());}
+{RETN}          {return new Symbol(sym.RETN, yyline +1, yycolumn +1, yytext());}
+{CL}            {return new Symbol(sym.CL, yyline +1, yycolumn +1, yytext());}
+{CLEX}          {return new Symbol(sym.CLEX, yyline +1, yycolumn +1, yytext());}    
+{CLPRPU}        {return new Symbol(sym.CLPRPU, yyline +1, yycolumn +1, yytext());}
+{CLPRPT}        {return new Symbol(sym.CLPRPT, yyline +1, yycolumn +1, yytext());}
+{CLPRPV}        {return new Symbol(sym.CLPRPV, yyline +1, yycolumn +1, yytext());}
+{CLMTPU}        {return new Symbol(sym.CLMTPU, yyline +1, yycolumn +1, yytext());}
+{CLMTPT}        {return new Symbol(sym.CLMTPT, yyline +1, yycolumn +1, yytext());}    
+{CLMTPV}        {return new Symbol(sym.CLMTPV, yyline +1, yycolumn +1, yytext());}            
+{CLIN}          {return new Symbol(sym.CLIN, yyline +1, yycolumn +1, yytext());}
+{FRD}           {return new Symbol(sym.FRD, yyline +1, yycolumn +1, yytext());}
+{FRM}           {return new Symbol(sym.FRM, yyline +1, yycolumn +1, yytext());}
+{FRH}           {return new Symbol(sym.FRH, yyline +1, yycolumn +1, yytext());}
+{FRINC}         {return new Symbol(sym.FRINC, yyline +1, yycolumn +1, yytext());}
+{FRDEC}         {return new Symbol(sym.FRDEC, yyline +1, yycolumn +1, yytext());}
+{RD}            {return new Symbol(sym.RD, yyline +1, yycolumn +1, yytext());}
+{WT}            {return new Symbol(sym.WT, yyline +1, yycolumn +1, yytext());}
+{NBOOL}         {return new Symbol(sym.NBOOL, yyline +1, yycolumn +1, yytext());}
+{NMCL}          {return new Symbol(sym.NMCL, yyline +1, yycolumn +1, yytext());}
+{NUMR}          {return new Symbol(sym.NUMR, yyline +1, yycolumn +1, yytext());}
+{IDEN}          {return new Symbol(sym.IDEN, yyline +1, yycolumn +1, yytext());}
+{CADTXT}        {return new Symbol(sym.CADTXT, yyline +1, yycolumn +1, yytext());}
+{FcF}           {return new Symbol(sym.FcF, yyline +1, yycolumn +1, yytext());}
+{FcI}           {return new Symbol(sym.FcI, yyline +1, yycolumn +1, yytext());}
+{FcB}           {return new Symbol(sym.FcB, yyline +1, yycolumn +1, yytext());} 
+{SEN}           {return new Symbol(sym.SEN, yyline +1, yycolumn +1, yytext());}
+{COS}           {return new Symbol(sym.COS, yyline +1, yycolumn +1, yytext());}
+{TAN}           {return new Symbol(sym.TAN, yyline +1, yycolumn +1, yytext());}
+{LOG}           {return new Symbol(sym.LOG, yyline +1, yycolumn +1, yytext());}
+{SQRT}          {return new Symbol(sym.SQRT, yyline +1, yycolumn +1, yytext());}
 
-.               {return new Symbol(sym.error); }
+.    { System.out.println("Error Lexico " + (yyline+1) + " " + (yycolumn+1) + " " + yytext() ); }
