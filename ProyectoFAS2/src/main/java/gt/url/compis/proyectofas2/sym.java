@@ -13,18 +13,18 @@ public interface sym {
   public static final int SEN = 34;
   public static final int CLIN = 40;
   public static final int MetRes = 28;
-  public static final int POT = 47;
+  public static final int POT = 48;
   public static final int CLPRPV = 24;
-  public static final int OLOG = 56;
+  public static final int OLOG = 57;
   public static final int CLPRPU = 22;
-  public static final int RES = 58;
+  public static final int RES = 59;
   public static final int CLPRPT = 23;
   public static final int P = 44;
-  public static final int MYQ = 51;
+  public static final int MYQ = 52;
   public static final int NUMR = 16;
-  public static final int DSP = 62;
-  public static final int DECR = 46;
-  public static final int INCR = 45;
+  public static final int DSP = 63;
+  public static final int DECR = 47;
+  public static final int INCR = 46;
   public static final int INT = 5;
   public static final int TAN = 36;
   public static final int CLEX = 21;
@@ -34,8 +34,8 @@ public interface sym {
   public static final int CADTXT = 18;
   public static final int BOOL = 7;
   public static final int FRH = 11;
-  public static final int FLC = 55;
-  public static final int DIV = 60;
+  public static final int FLC = 56;
+  public static final int DIV = 61;
   public static final int FRDEC = 13;
   public static final int NUM = 15;
   public static final int FRD = 9;
@@ -46,31 +46,32 @@ public interface sym {
   public static final int METPRIN = 29;
   public static final int RD = 41;
   public static final int error = 1;
-  public static final int MUL = 59;
-  public static final int EQEQ = 49;
+  public static final int MUL = 60;
+  public static final int COMA = 45;
+  public static final int EQEQ = 50;
   public static final int SPC = 43;
   public static final int IMP = 30;
-  public static final int MOD = 61;
+  public static final int MOD = 62;
   public static final int COS = 35;
-  public static final int NEQ = 50;
-  public static final int EQ = 48;
+  public static final int NEQ = 51;
+  public static final int EQ = 49;
   public static final int CLMTPV = 27;
   public static final int CLMTPU = 25;
   public static final int CLMTPT = 26;
   public static final int LOG = 37;
-  public static final int PDR = 54;
+  public static final int PDR = 55;
   public static final int WT = 42;
   public static final int IDEN = 17;
-  public static final int MNQ = 52;
+  public static final int MNQ = 53;
   public static final int FLOAT = 8;
   public static final int FcI = 32;
-  public static final int SUM = 57;
+  public static final int SUM = 58;
   public static final int FcF = 31;
   public static final int STRING = 6;
   public static final int FRINC = 12;
   public static final int FcB = 33;
   public static final int THN = 3;
-  public static final int PIZ = 53;
+  public static final int PIZ = 54;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -117,6 +118,7 @@ public interface sym {
   "WT",
   "SPC",
   "P",
+  "COMA",
   "INCR",
   "DECR",
   "POT",

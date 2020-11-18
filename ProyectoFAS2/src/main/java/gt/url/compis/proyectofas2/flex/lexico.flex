@@ -24,7 +24,9 @@ COMENTARIO     = {ctipo1} | {ctipo2} | {ctipo3}
 
 /*TOKENS*/
 SPC             = [ \t\f]                                                       /*Identacion o espacio blanco*/
+F               = \r|\n|\r\n                                                            /*Fin de linea*/
 P               = "."
+COMA            = ","
 INCR            = "++"
 DECR            = "--"
 SUM             = "+"
@@ -42,7 +44,6 @@ PIZ             = "("
 PDR             = ")"
 DSP             = ":"
 FLC             = ";"                                                           /*Final de linea con ;*/
-F               = \r|\n|\r\n                                                            /*Fin de linea*/
 OLOG            = (AND|OR|NOT)
 MetRes          = (constructor|destructor)                                      /*metodos reservados*/
 METPRIN         = "Principal"
@@ -97,7 +98,8 @@ NoIdes = ({lqs2}|{NUM}){IDEN} | {IDEN}{lqs2}
 
 {NUM}           {return new Symbol( sym.NUM, yyline +1, yycolumn +1, yytext() );}
 {SPC}           {return new Symbol(sym.SPC, yyline +1, yycolumn +1, yytext());}
-{P}             {return new Symbol(sym.P, yyline +1, yycolumn +1, yytext());}    
+{P}             {return new Symbol(sym.P, yyline +1, yycolumn +1, yytext());}   
+{COMA}          {return new Symbol(sym.COMA, yyline +1, yycolumn +1, yytext());}      
 {INCR}          {return new Symbol(sym.INCR, yyline +1, yycolumn +1, yytext());}
 {DECR}          {return new Symbol(sym.DECR, yyline +1, yycolumn +1, yytext());}    
 {SUM}           {return new Symbol(sym.SUM, yyline +1, yycolumn +1, yytext());}  

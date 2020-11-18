@@ -21,37 +21,42 @@ public void unrecovered_syntax_error( Symbol s ) throws java.lang.Exception
      Import_lib ::= IMP SPC CADTXT NUM:ca 
         {: System.out.println("Linea: " + caleft + " Lexema: " +ca); :}; */
 
-terminal IF,THN, ELS;                                               //Tokens para los if 
-terminal INT, STRING, BOOL, FLOAT;                                  //Tokens de tipos de datos
-terminal FRD, FRM, FRH, FRINC, FRDEC;                               //Tokens para los for 
-terminal NBOOL, NUM, NUMR, IDEN, CADTXT, NMCL;                      //Tokens de elementos basicos   
-terminal CL, CLEX, CLPRPU, CLPRPT, CLPRPV, CLMTPU, CLMTPT, CLMTPV;  //Tokens para las clases
+terminal IF,THN, ELS;                                                           //Tokens para los if 
+terminal INT, STRING, BOOL, FLOAT;                                              //Tokens de tipos de datos
+terminal FRD, FRM, FRH, FRINC, FRDEC;                                           //Tokens para los for 
+terminal NBOOL, NUM, NUMR, IDEN, CADTXT, NMCL;                                  //Tokens de elementos basicos   
+terminal CL, CLEX, CLPRPU, CLPRPT, CLPRPV, CLMTPU, CLMTPT, CLMTPV;              //Tokens para las clases
 terminal MetRes, METPRIN, IMP, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, RETN, CLIN, RD, WT;
-terminal SPC, P, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
+terminal SPC, P, COMA, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
 
-non terminal LOOP, LineaC, Import_lib, G_clase, F_principal;
-non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo, STRUCT_PRIN;
-non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
+non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin;
+non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
+non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;}
+non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign;
 
-STRUCT_PRIN   ::= INT SPC METPRIN PIZ PDR SPC SPC NMCL SPC IDEN SPC EQ SPC IDEN SPC NMCL PIZ PDR SPC SPC IDEN P IDEN PIZ PDR SPC SPC RETN SPC NUM;
+LOOP ::= LineaC LOOP | LineaC;
 
-STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
+LineaC ::= Import_lib | Gramar_clase | FuncPrin;
 
-ifU     ::= IF SPC cond1 SPC THN SPC SPC RETN SPC NUM 
-            | IF SPC cond2 SPC THN SPC SPC RETN SPC NUM 
-            | IF SPC cond3 SPC THN SPC SPC RETN SPC NUM 
-            | IF SPC cond4 SPC THN SPC SPC RETN SPC NUM
-            | IF SPC cond5 SPC THN SPC SPC RETN SPC NUM;       
+FuncPrin ::= DeclPrin CodSuelt;
 
-ifELS   ::= ELS SPC cond1 SPC THN SPC SPC RETN SPC NUM  
-            | ELS SPC cond2 SPC THN SPC SPC RETN SPC NUM 
-            | ELS SPC cond3 SPC THN SPC SPC RETN SPC NUM 
-            | ELS SPC cond4 SPC THN SPC SPC RETN SPC NUM 
-            | ELS SPC cond5 SPC THN SPC SPC RETN SPC NUM 
-            | ELS SPC SPC RETN SPC NUM;  
+DeclPrin ::= INT SPC METPRIN PIZ PDR;
 
-cond1   ::= IDEN MOD NUM;
-cond2   ::= IDEN EQEQ NUM;
-cond3   ::= IDEN NEQ NUM;
-cond4   ::= IDEN MYQ NUM;
-cond5   ::= IDEN MNQ NUM;
+CodSuelt ::= Pinea CodSuelt | Pinea;
+
+Pinea ::= SPC SPC Salida | SPC SPC RD SPC IDEN | SPC SPC Retor | SPC SPC Asign;
+
+Retor ::= RETN SPC NUM;
+
+Salida ::= WT SPC CADTXT                                                        //falta agregar
+        | WT SPC IDEN 
+        | WT SPC CADTXT COMA SPC IDEN 
+        | WT SPC IDEN COMA SPC CADTXT 
+        | WT SPC IDEN COMA SPC NUM COMA SPC CADTXT;
+
+Asign ::= IDEN SPC EQ SPC NUM                                                   //falta agregar
+        | IDEN SPC EQ SPC CADTXT 
+        | IDEN SPC EQ SPC NUMR 
+        | IDEN SPC EQ SPC IDEN SUM NUM 
+        | IDEN SPC EQ SPC NUM SUM IDEN 
+        | IDEN SPC EQ SPC IDEN ;
