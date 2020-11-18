@@ -1,12 +1,4 @@
-si iden%5 entonces
-  devolver 1
-sino iden==5 entonces
-  devolver 1
-sino iden!=33 entonces
-  devolver 1
-sino iden>5 entonces
-  devolver 1
-sino iden<5 entonces
-  devolver 1
-sino
-  devolver 341
+entero Principal()
+  desde i mientras i > 5 decrementar 2 hacer
+     escribir i
+  devolver 0
