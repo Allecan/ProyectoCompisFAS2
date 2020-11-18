@@ -1,24 +1,31 @@
 package gt.url.compis.proyectofas2;
 
-terminal  SPC, P, INCR, DECR, POT, EQ, EQEQ,NEQ,MYQ,MNQ,PIZ,PDR,FLC,F,OLOG,MetRes, METPRIN, INT,STRING,BOOL,FLOAT,IMP,IF,THN,ELS;
-terminal  RETN,CL,CLEX,CLPR,CLPRPU,CLPRPT,CLPRPV,CLMT,CLMTPU,CLMTPT,CLMTPV,CLIN,FRD, FRM, FRH, FRINC, FRDEC, RD, WT;
-terminal  NBOOL, NUM, NUMR, IDEN, CADTXT, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, SUM, RES, MUL, DIV, MOD, DSP, NMCL;
+terminal IF,THN, ELS;                                               //Tokens para los if 
+terminal INT, STRING, BOOL, FLOAT;                                  //Tokens de tipos de datos
+terminal FRD, FRM, FRH, FRINC, FRDEC;                               //Tokens para los for 
+terminal NBOOL, NUM, NUMR, IDEN, CADTXT, NMCL;                      //Tokens de elementos basicos   
+terminal CL, CLEX, CLPRPU, CLPRPT, CLPRPV, CLMTPU, CLMTPT, CLMTPV;  //Tokens para las clases
+terminal MetRes, METPRIN, IMP, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, RETN, CLIN, RD, WT;
+terminal SPC, P, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
 
+non terminal LOOP, LineaC, Import_lib, G_clase, F_principal;
+non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
 non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
 
 STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
-ifU     ::= IF SPC cond1 SPC THN F SPC SPC RETN SPC NUM F 
-            | IF SPC cond2 SPC THN F SPC SPC RETN SPC NUM F 
-            | IF SPC cond3 SPC THN F SPC SPC RETN SPC NUM F 
-            | IF SPC cond4 SPC THN F SPC SPC RETN SPC NUM F
-            | IF SPC cond5 SPC THN F SPC SPC RETN SPC NUM F;       
 
-ifELS   ::= ELS SPC cond1 SPC THN F SPC SPC RETN SPC NUM F 
-            | ELS SPC cond2 SPC THN F SPC SPC RETN SPC NUM F 
-            | ELS SPC cond3 SPC THN F SPC SPC RETN SPC NUM F 
-            | ELS SPC cond4 SPC THN F SPC SPC RETN SPC NUM F 
-            | ELS SPC cond5 SPC THN F SPC SPC RETN SPC NUM F 
-            | ELS F SPC SPC RETN SPC NUM F;  
+ifU     ::= IF SPC cond1 SPC THN SPC SPC RETN SPC NUM 
+            | IF SPC cond2 SPC THN SPC SPC RETN SPC NUM 
+            | IF SPC cond3 SPC THN SPC SPC RETN SPC NUM 
+            | IF SPC cond4 SPC THN SPC SPC RETN SPC NUM
+            | IF SPC cond5 SPC THN SPC SPC RETN SPC NUM;       
+
+ifELS   ::= ELS SPC cond1 SPC THN SPC SPC RETN SPC NUM  
+            | ELS SPC cond2 SPC THN SPC SPC RETN SPC NUM 
+            | ELS SPC cond3 SPC THN SPC SPC RETN SPC NUM 
+            | ELS SPC cond4 SPC THN SPC SPC RETN SPC NUM 
+            | ELS SPC cond5 SPC THN SPC SPC RETN SPC NUM 
+            | ELS SPC SPC RETN SPC NUM;  
 
 cond1   ::= IDEN MOD NUM;
 cond2   ::= IDEN EQEQ NUM;

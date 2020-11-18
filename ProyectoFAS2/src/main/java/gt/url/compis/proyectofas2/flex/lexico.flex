@@ -11,7 +11,7 @@ import java_cup.runtime.Symbol;
 /*NO TOKENS*/
 let            = [:jletter:]+                                                   /*Letras o palabras incluido el guion*/
 letdig         = [:jletterdigit:]+                                              /*Letras con digitos */    
-lqs            = .*                                                             /*Cualquier caracter excepto \n*/
+/* lqs            = .*                                                             Cualquier caracter excepto \n*/
 lqs2           = [\\!\\\"\\#\\$\\%\\&\\'\\(\\)\\*\\+\\,\\-\\.\\/\\:\\;\\<\\>\\=\\?\\@\\[\\]\\{\\}\\`\\~\\|]+  
 com            = \"
 entrada        = [^\r\n]
@@ -56,15 +56,13 @@ THN             = "entonces"
 ELS             = "sino"
 RETN            = "devolver"
 CL              = "clase"
-CLEX            = "extiende"
-CLPR            = "propiedades"
-CLPRPU          = "publicas"
-CLPRPT          = "protegidas"
-CLPRPV          = "privadas"
-CLMT            = "metodos"
-CLMTPU          = "publicos"
-CLMTPT          = "protegidos"
-CLMTPV          = "privados"
+CLEX             = "extiende"
+CLPRPU          = "propiedades publicas"
+CLPRPT          = "propiedades protegidas"
+CLPRPV          = "propiedades privadas"
+CLMTPU          = "metodos publicos"
+CLMTPT          = "metodos protegidos"
+CLMTPV          = "metodos privados"
 CLIN            = "instanciar"
 FRD             = "desde"
 FRM             = "mientras"
@@ -73,13 +71,13 @@ FRINC           = "incrementar"
 FRDEC           = "decrementar"
 RD              = "leer"
 WT              = "escribir"
-NBOOL           = 1|0
+NBOOL           = "TRUE"|"FALSE"
 NUM             = 0|(-?)[1-9][0-9]* 
 NMCL            = [A-Z][a-zA-Z0-9_]+
 
 NUMR            = (-?)[0-9]+{P}[0-9]+                                           /*Numeros reales*/
 IDEN            = {let}({NUM}?{let}?)*                              
-CADTXT          = {com}({let}|{SPC}|{letdig}|{lqs})*{com}                       /*Cadenas de texto*/
+CADTXT          = {com}({let}|{SPC}|{letdig}|{lqs2})*{com}                       /*Cadenas de texto*/
 FcF             = {FLOAT}{SPC}"cadenaAreal"                                     /*Funciones especiales*/
 FcI             = {INT}{SPC}"cadenaAentero"
 FcB             = {BOOL}{SPC}"cadenaAboleano"
@@ -93,8 +91,11 @@ SQRT            = {FLOAT}{SPC}"raiz"                                            
 NoIdes = ({lqs2}|{NUM}){IDEN} | {IDEN}{lqs2}
 
 %%
-{NUM}           {return new Symbol(sym.NUM);}
 
+{COMENTARIO}    { }
+{F}             { }
+
+{NUM}           {return new Symbol(sym.NUM);}
 {SPC}           {return new Symbol(sym.SPC);}
 {P}             {return new Symbol(sym.P);}    
 {INCR}          {return new Symbol(sym.INCR);}
@@ -114,7 +115,6 @@ NoIdes = ({lqs2}|{NUM}){IDEN} | {IDEN}{lqs2}
 {PDR}           {return new Symbol(sym.PDR);}
 {DSP}           {return new Symbol(sym.DSP);}
 {FLC}           {return new Symbol(sym.FLC);}
-{F}             {return new Symbol(sym.F);}
 {OLOG}          {return new Symbol(sym.OLOG);}
 {MetRes}        {return new Symbol(sym.MetRes);}   
 {METPRIN}       {return new Symbol(sym.METPRIN);}   
@@ -129,11 +129,9 @@ NoIdes = ({lqs2}|{NUM}){IDEN} | {IDEN}{lqs2}
 {RETN}          {return new Symbol(sym.RETN);}
 {CL}            {return new Symbol(sym.CL);}
 {CLEX}          {return new Symbol(sym.CLEX);}    
-{CLPR}          {return new Symbol(sym.CLPR);}
 {CLPRPU}        {return new Symbol(sym.CLPRPU);}
 {CLPRPT}        {return new Symbol(sym.CLPRPT);}
 {CLPRPV}        {return new Symbol(sym.CLPRPV);}
-{CLMT}          {return new Symbol(sym.CLMT);}
 {CLMTPU}        {return new Symbol(sym.CLMTPU);}
 {CLMTPT}        {return new Symbol(sym.CLMTPT);}    
 {CLMTPV}        {return new Symbol(sym.CLMTPV);}            
