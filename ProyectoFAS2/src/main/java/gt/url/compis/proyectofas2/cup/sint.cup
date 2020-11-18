@@ -21,28 +21,45 @@ public void unrecovered_syntax_error( Symbol s ) throws java.lang.Exception
      Import_lib ::= IMP SPC CADTXT NUM:ca 
         {: System.out.println("Linea: " + caleft + " Lexema: " +ca); :}; */
 
+
 terminal IF,THN, ELS;                                                           //Tokens para los if 
 terminal INT, STRING, BOOL, FLOAT;                                              //Tokens de tipos de datos
 terminal FRD, FRM, FRH, FRINC, FRDEC;                                           //Tokens para los for 
 terminal NBOOL, NUM, NUMR, IDEN, CADTXT, NMCL;                                  //Tokens de elementos basicos   
 terminal CL, CLEX, CLPRPU, CLPRPT, CLPRPV, CLMTPU, CLMTPT, CLMTPV;              //Tokens para las clases
 terminal MetRes, METPRIN, IMP, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, RETN, CLIN, RD, WT;
-terminal SPC, P, COMA, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
+terminal  SPC, P, COMA, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
 
-
-non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin, ESTRUCTURA_INSTANCIAR;
-non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
+non terminal LOOP, LineaC, Import_lib, Gramar_clase, FuncPrin;
+non terminal Decl_clase, Prop_clase, Metod_clase;
 non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
-non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign, Declar, Metodo;
+non terminal DeclPrin, CodSuelt, Pinea, Retor, Salida, Asign, Declar, Metodo, ESTRUCTURA_INSTANCIAR;
 non terminal OPERACIONES_CICLOS, SIGNOS_COMPARACION, OPERACIONES_ARITMETICAS, ESTRUCTURA_FOR, OPERACIONES_DO, ESTRUCTURA_DO, ESPACIOS_5; //funciones para ciclos
+
+precedence left CL;
+
 
 LOOP ::= LineaC LOOP | LineaC;
 
 LineaC ::= Import_lib | Gramar_clase | FuncPrin;
 
+Import_lib ::= IMP SPC CADTXT;
+
 FuncPrin ::= DeclPrin CodSuelt;
 
 DeclPrin ::= INT SPC METPRIN PIZ PDR;
+
+Gramar_clase ::= Decl_clase Gramar_clase | Decl_clase;
+
+Decl_clase ::= CL SPC NMCL Prop_clase | CL SPC NMCL Metod_clase;
+
+Prop_clase ::= SPC SPC CLPRPU DSP SPC SPC CodSuelt FLC Prop_clase | SPC SPC CLPRPU DSP
+            | SPC SPC CLPRPV DSP SPC SPC CodSuelt FLC Prop_clase | SPC SPC CLPRPV DSP 
+            | SPC SPC CLPRPT DSP SPC SPC CodSuelt FLC Prop_clase | SPC SPC CLPRPT DSP;      
+
+Metod_clase ::= SPC SPC CLMTPU DSP SPC SPC CodSuelt FLC Metod_clase| SPC SPC CLMTPU DSP 
+            | SPC SPC CLMTPV DSP SPC SPC CodSuelt FLC Metod_clase | SPC SPC CLMTPV DSP 
+            | SPC SPC CLMTPT DSP SPC SPC CodSuelt FLC Metod_clase | SPC SPC CLMTPT DSP;
 
 CodSuelt ::= Pinea CodSuelt | Pinea;
 
@@ -115,7 +132,7 @@ ESTRUCTURA_DO ::= FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SP
 ESTRUCTURA_INSTANCIAR ::= NMCL SPC IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR
                          |IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR;
                 
-Declar ::= INT SPC Asign | FLOAT SPC Asign | INT SPC IDEN SPC ; 
+Declar ::= INT SPC Asign | FLOAT SPC Asign | STRING SPC Asign |INT SPC IDEN SPC ; 
 
 STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
 
