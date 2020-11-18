@@ -9,8 +9,10 @@ terminal MetRes, METPRIN, IMP, FcF, FcI, FcB, SEN, COS, TAN, LOG, SQRT, RETN, CL
 terminal SPC, P, INCR, DECR, POT, EQ, EQEQ, NEQ, MYQ, MNQ, PIZ, PDR, FLC, OLOG, SUM, RES, MUL, DIV, MOD, DSP;
 
 non terminal LOOP, LineaC, Import_lib, G_clase, F_principal;
-non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo;
+non terminal Clase_CMP, Clase_SMP, Prop_clase, Prop_tipo, Metod_clase, Met_tipo, STRUCT_PRIN;
 non terminal STRUC_if, ifU, ifELS, cond1, cond2, cond3, cond4, cond5;
+
+STRUCT_PRIN   ::= INT SPC METPRIN PIZ PDR SPC SPC NMCL SPC IDEN SPC EQ SPC IDEN SPC NMCL PIZ PDR SPC SPC IDEN P IDEN PIZ PDR SPC SPC RETN SPC NUM;
 
 STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
 
