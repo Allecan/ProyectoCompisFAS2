@@ -1,4 +1,5 @@
 entero Principal()
-  desde i mientras i > 5 decrementar 2 hacer
-     escribir i
+  hacer
+     a=5+b
+  mientras b < 10
   devolver 0
