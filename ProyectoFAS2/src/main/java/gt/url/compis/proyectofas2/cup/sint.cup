@@ -1,13 +1,17 @@
 package gt.url.compis.proyectofas2;
 import java_cup.runtime.Symbol;
+import java.util.ArrayList;
 
 parser code {:
+
+public ArrayList<String> SyntacticErrors = new ArrayList<String>();
 
 public void syntax_error( Symbol s )
 {
     System.out.println("Error de Sintaxis en: " +s.value );    
     System.out.println( "Linea " + s.left );
     System.out.println( "Columna " + s.right );
+    SyntacticErrors.add("* Error Sintactico. Linea: " + (s.left+1) + " Columna: " + (s.right+1) + ". Simbolo: \'" + s.value + "\' * Mensaje Error: Simbolo no reconocido.");
 }
 
 public void unrecovered_syntax_error( Symbol s ) throws java.lang.Exception
@@ -17,7 +21,7 @@ public void unrecovered_syntax_error( Symbol s ) throws java.lang.Exception
 
 :};
 
-/* Ejemplo para que te ponga el lexema xd ↓
+/* Ejemplo para que te ponga el lexema xd→ 
      Import_lib ::= IMP SPC CADTXT NUM:ca 
         {: System.out.println("Linea: " + caleft + " Lexema: " +ca); :}; */
 
@@ -82,7 +86,8 @@ Salida ::= WT SPC CADTXT
         | WT SPC IDEN COMA SPC CADTXT 
         | WT SPC IDEN COMA SPC NUM COMA SPC CADTXT
         | WT SPC Metodo
-        | WT SPC Metodo COMA SPC Metodo;
+        | WT SPC Metodo COMA SPC Metodo
+        | WT SPC Metodo COMA SPC IDEN;
 
 Asign ::= IDEN SPC EQ SPC NUM                                                
         | IDEN SPC EQ SPC CADTXT 
@@ -132,15 +137,15 @@ ESTRUCTURA_DO ::= FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SP
 ESTRUCTURA_INSTANCIAR ::= NMCL SPC IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR
                          |IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR;
                 
-Declar ::= INT SPC Asign | FLOAT SPC Asign | STRING SPC Asign |INT SPC IDEN SPC ; 
+Declar ::= INT SPC Asign | FLOAT SPC Asign | STRING SPC Asign |INT SPC IDEN SPC | STRING SPC IDEN SPC; 
 
 STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
 
-ifU     ::= IF SPC cond1 SPC THN SPC SPC SPC SPC RETN SPC NUM 
-            | IF SPC cond2 SPC THN SPC SPC SPC SPC RETN SPC NUM 
-            | IF SPC cond3 SPC THN SPC SPC SPC SPC RETN SPC NUM 
-            | IF SPC cond4 SPC THN SPC SPC SPC SPC RETN SPC NUM
-            | IF SPC cond5 SPC THN SPC SPC SPC SPC RETN SPC NUM;       
+ifU     ::= IF SPC cond1 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM 
+            | IF SPC cond2 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM 
+            | IF SPC cond3 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM 
+            | IF SPC cond4 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM
+            | IF SPC cond5 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM;       
 
 ifELS   ::= ELS SPC cond1 SPC THN SPC SPC SPC SPC RETN SPC NUM  
             | ELS SPC cond2 SPC THN SPC SPC SPC SPC RETN SPC NUM 
@@ -154,4 +159,3 @@ cond2   ::= IDEN EQEQ NUM;
 cond3   ::= IDEN NEQ NUM;
 cond4   ::= IDEN MYQ NUM;
 cond5   ::= IDEN MNQ NUM;
- 

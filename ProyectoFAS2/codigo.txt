@@ -1,3 +1,0 @@
-entero Principal()
-  r = instanciar Rectangulo()
-  devolver 0

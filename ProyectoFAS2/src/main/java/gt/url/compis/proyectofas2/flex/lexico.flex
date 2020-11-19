@@ -5,7 +5,9 @@ import java_cup.runtime.Symbol;
 
 %class Lexico 
 %unicode
+%public
 %line
+%column
 %cup
 
 /*NO TOKENS*/

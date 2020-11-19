@@ -23,18 +23,22 @@ import java.util.logging.Logger;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-//        String codigo = ""; /*Esto es para obtener desde consola*/
-//        codigo = args[0];
-//        System.out.println(codigo);
+        String codigo = "";
+        codigo = args[0];
         try {
-            Lexico lex = new Lexico(new FileReader("codigo.loop"));
+            Lexico lex = new Lexico(new FileReader(codigo));
             Sintactico sint = new Sintactico(lex);
-            sint.parse();          
-//            System.out.println("\nSIN ERRORES\n");
+            String s = sint.parse().toString();
+            if (s.contains("#0")) {
+                System.out.println("COMPILACION EXITOSA");
+            } else {
+                System.out.println("COMPILACION FALLIDA, REVISE");
+            }
+
         } catch (FileNotFoundException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-//            System.out.println("\n-*-*-*- ERRORES -*-*-*-\n");
+//            System.out.println("COMPILACION FALLIDA, REVISE");
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
