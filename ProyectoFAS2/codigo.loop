@@ -1,0 +1,33 @@
+/* área de inclusión de bibliotecas externas */
+// ninguna librería que cargar
+
+/* área de declaración de clases */
+clase Impar
+  propiedades publicas:
+    cadena hola ;
+  propiedades privadas:
+
+clase HolaMundo
+  propiedades privadas:
+    entero a 
+  cadena nombre 
+  Impar I ;
+  propiedades publicas:
+    a = 5
+  nombre = "";
+  propiedades protegidas:
+
+/* área de declaración de función de carga inicial */
+entero Principal()
+  HolaMundo hola = instanciar HolaMundo()
+  i = 60
+  desde i mientras i > 5 decrementar 2 hacer
+     escribir i
+    hacer /*Comentarios dentro de código*/
+    a=5+b
+  mientras a < 10
+  si i%2 entonces
+    escribir hola.getNombre(), i;
+    devolver 1
+  escribir "valor actual de i:", i
+  devolver 0
