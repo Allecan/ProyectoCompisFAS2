@@ -1,3 +1,43 @@
+/* área de inclusión de bibliotecas externas */
+// ninguna librería que cargar
+
+/* área de declaración de clases */
+clase Impar
+  propiedades privadas:
+  propiedades publicas:
+    cadena hola
+  metodos publicos:
+    entero esImpar(entero numero)
+      si numero % 2 entonces
+        devolver 1;
+      sino 
+        devolver 0;
+  metodos privados:
+  
+
+clase HolaMundo
+  propiedades privadas:
+    entero a
+    cadena nombre
+    Impar i
+  metodos publicos:
+    constructor()
+      i = nuevo Impar()
+      a = 5
+      nombre = ""
+      devolver i.esImpar(a)
+    cadena getNombre()
+      devolver nombre
+
+/* área de declaración de función de carga inicial */
 entero Principal()
-  r = instanciar Rectangulo()
-  devolver 0
+  HolaMundo hola = instanciar HolaMundo()/* comentarios en la mísma línea */
+  i = 60
+  desde i mientras i > 5 decrementar 2 hacer
+    hacer /*Comentarios dentro de código*/
+        a =5+ b
+    mientras a < 10
+    si i % 2 = 2 entonces
+      escribir hola.getNombre(), i;
+    escribir "valor actual de i:", i;
+  escribir "hola ", hola.getNombre(), " gracias por usar éste programa"
