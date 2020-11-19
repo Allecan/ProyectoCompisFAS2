@@ -55,6 +55,7 @@ DeclPrin ::= INT SPC METPRIN PIZ PDR;
 
 Gramar_clase ::= Decl_clase Gramar_clase | Decl_clase;
 
+
 Decl_clase ::= CL SPC NMCL Prop_clase | CL SPC NMCL Metod_clase;
 
 Prop_clase ::= SPC SPC CLPRPU DSP SPC SPC CodSuelt FLC Prop_clase | SPC SPC CLPRPU DSP
@@ -84,6 +85,7 @@ Salida ::= WT SPC CADTXT
         | WT SPC IDEN 
         | WT SPC CADTXT COMA SPC IDEN 
         | WT SPC IDEN COMA SPC CADTXT 
+        | WT SPC IDEN COMA SPC CADTXT COMA SPC IDEN
         | WT SPC IDEN COMA SPC NUM COMA SPC CADTXT
         | WT SPC Metodo
         | WT SPC Metodo COMA SPC Metodo
@@ -137,16 +139,16 @@ ESTRUCTURA_DO ::= FRH SPC SPC SPC SPC SPC OPERACIONES_DO SPC SPC FRM SPC IDEN SP
 ESTRUCTURA_INSTANCIAR ::= NMCL SPC IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR
                          |IDEN SPC EQ SPC CLIN SPC NMCL PIZ PDR;
                 
-Declar ::= INT SPC Asign | FLOAT SPC Asign | STRING SPC Asign |INT SPC IDEN SPC | STRING SPC IDEN SPC; 
+Declar ::= INT SPC Asign | FLOAT SPC Asign | STRING SPC Asign |INT SPC IDEN SPC | STRING SPC IDEN SPC | NMCL SPC IDEN SPC ; 
 
-STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if | ifU | ifELS; 
+STRUC_if ::=  ifU STRUC_if | ifELS STRUC_if |ifU | ifELS ; 
 
-ifU     ::= IF SPC cond1 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM 
+ifU     ::= IF SPC cond1 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM
             | IF SPC cond2 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM 
             | IF SPC cond3 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM 
             | IF SPC cond4 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM
-            | IF SPC cond5 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM;       
-
+            | IF SPC cond5 SPC THN SPC SPC CodSuelt FLC SPC SPC SPC SPC RETN SPC NUM; 
+      
 ifELS   ::= ELS SPC cond1 SPC THN SPC SPC SPC SPC RETN SPC NUM  
             | ELS SPC cond2 SPC THN SPC SPC SPC SPC RETN SPC NUM 
             | ELS SPC cond3 SPC THN SPC SPC SPC SPC RETN SPC NUM 
